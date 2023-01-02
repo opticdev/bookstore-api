@@ -1,0 +1,14 @@
+build
+node_modules
+har-capture
+
+
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+.pnp.*
+
+# generated openapi spec
+openapi.yml
