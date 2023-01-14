@@ -12,3 +12,5 @@ har-capture
 
 # generated openapi spec
 openapi.yml
+
+tsconfig.tsbuildinfo
