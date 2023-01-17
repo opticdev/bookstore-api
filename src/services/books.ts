@@ -47,13 +47,19 @@ export function getMany(): BookResponse[] {
   return [...bookDatabase.values()];
 }
 
-export function create(book: BookRequest): BookResponse {
+export function get(id: string): BookResponse | null {
+  return bookDatabase.get(id) ?? null;
+}
+
+export function create(bookRequest: BookRequest): BookResponse {
   const id = nanoid();
   const now = new Date().toISOString();
-  return {
-    ...book,
+  const book = {
+    ...bookRequest,
     id,
     created_at: now,
     updated_at: now,
   };
+  bookDatabase.set(id, book);
+  return book;
 }
