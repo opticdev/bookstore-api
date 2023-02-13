@@ -49,6 +49,22 @@ const books: BookResponse[] = [
 
 const bookDatabase = new Map(books.map((b) => [b.id, b]));
 
+export function update(
+  id: string,
+  updates: Partial<BookRequest>
+): BookResponse | null {
+  let book = bookDatabase.get(id);
+  if (book) {
+    book = {
+      ...book,
+      ...updates,
+      updated_at: new Date().toISOString(),
+    };
+    bookDatabase.set(id, book);
+  }
+  return book ?? null;
+}
+
 export function getMany(): BookResponse[] {
   return [...bookDatabase.values()];
 }
