@@ -16,33 +16,32 @@ export type AuthorResponse = Static<typeof AuthorResponse>;
 
 const Authors: AuthorResponse[] = [
   {
-    id: '6nTxAFM5ck4Hob77hGQoL',
-    name: 'Jane Austen',
-    created_at: '2023-04-22T17:17:41.326Z',
-    updated_at: '2023-04-22T17:17:41.326Z',
+    id: "6nTxAFM5ck4Hob77hGQoL",
+    name: "Jane Austen",
+    created_at: "2023-04-22T17:17:41.326Z",
+    updated_at: "2023-04-22T17:17:41.326Z",
   },
   {
-    id: 'NjpTwgmENj11rGdUgpCQ9',
-    name: 'F. Scott Fitzgerald',
-    created_at: '2023-03-22T10:11:51.421Z',
-    updated_at: '2023-03-22T10:11:51.421Z',
+    id: "NjpTwgmENj11rGdUgpCQ9",
+    name: "F. Scott Fitzgerald",
+    created_at: "2023-03-22T10:11:51.421Z",
+    updated_at: "2023-03-22T10:11:51.421Z",
   },
   {
-    id: 'AcSwiQryWBeQqcNBqBg43',
-    name: 'Harper Lee',
-    created_at: '2023-04-01T07:11:01.701Z',
-    updated_at: '2023-04-01T07:11:01.701Z',
+    id: "AcSwiQryWBeQqcNBqBg43",
+    name: "Harper Lee",
+    created_at: "2023-04-01T07:11:01.701Z",
+    updated_at: "2023-04-01T07:11:01.701Z",
   },
   {
-    id: 'tNpOpQZbxytxTxDT15GQy',
-    name: 'George Orwell',
-    created_at: '2023-03-11T21:19:08.600Z',
-    updated_at: '2023-03-11T21:19:08.600Z',
+    id: "tNpOpQZbxytxTxDT15GQy",
+    name: "George Orwell",
+    created_at: "2023-03-11T21:19:08.600Z",
+    updated_at: "2023-03-11T21:19:08.600Z",
   },
 ];
 
 const authorDatabase = new Map(Authors.map((b) => [b.id, b]));
-
 
 export function getMany(): AuthorResponse[] {
   return [...authorDatabase.values()];
