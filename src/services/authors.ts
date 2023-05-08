@@ -43,6 +43,22 @@ const Authors: AuthorResponse[] = [
 
 const authorDatabase = new Map(Authors.map((b) => [b.id, b]));
 
+export function update(
+  id: string,
+  updates: Partial<AuthorRequest>
+): AuthorResponse | null {
+  let author = authorDatabase.get(id);
+  if (author) {
+    author = {
+      ...author,
+      ...updates,
+      updated_at: new Date().toISOString(),
+    };
+    authorDatabase.set(id, author);
+  }
+  return author ?? null;
+}
+
 export function getMany(): AuthorResponse[] {
   return [...authorDatabase.values()];
 }
