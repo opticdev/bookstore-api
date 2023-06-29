@@ -1,10 +1,19 @@
 import { FastifyInstance } from "fastify";
 import { Type, Static } from "@sinclair/typebox";
 
+import * as Authors from "../../services/authors";
 import * as Books from "../../services/books";
 import { PaginatedTypeBox } from "../../services/paginated";
 
-const GetBooksResponse = PaginatedTypeBox(Books.BookResponse);
+const BookWithAuthor = Type.Composite([
+  Books.BookResponse,
+  Type.Object({
+    author: Type.Optional(Authors.AuthorResponse),
+  }),
+]);
+type BookWithAuthor = Static<typeof BookWithAuthor>;
+
+const GetBooksResponse = PaginatedTypeBox(BookWithAuthor);
 type GetBooksResponse = Static<typeof GetBooksResponse>;
 
 const GetBooksQuery = Type.Object({
@@ -41,7 +50,10 @@ export const registerGetBooks = (app: FastifyInstance) => {
       const books = Books.getMany(sort);
       reply.code(200).send({
         has_more_data: false,
-        data: books,
+        data: books.map((b) => ({
+          ...b,
+          author: Authors.get(b.author_id) ?? undefined,
+        })),
         next: null,
       });
     }
