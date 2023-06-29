@@ -59,8 +59,18 @@ export function update(
   return author ?? null;
 }
 
-export function getMany(): AuthorResponse[] {
-  return [...authorDatabase.values()];
+export function getMany(sort: {
+  key: "name" | "created_at" | "updated_at";
+  order: "asc" | "desc";
+}): AuthorResponse[] {
+  return [...authorDatabase.values()].sort((a, b) => {
+    const comparison =
+      sort.key === "name"
+        ? a.name.localeCompare(b.name)
+        : new Date(a[sort.key]).getTime() - new Date(b[sort.key]).getTime();
+    const order = sort.order === "asc" ? 1 : -1;
+    return comparison * order;
+  });
 }
 
 export function get(id: string): AuthorResponse | null {
