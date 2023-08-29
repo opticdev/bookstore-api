@@ -1,3 +1,5 @@
+⚠️ This repo has been deprecated in favor of https://github.com/opticdev/examples. ⚠️
+
 # Bookstore API
 
 Bookstore API built using Fastify and Typescript with Optic. Generates an OpenAPI spec using `@fastify/swagger` and tracks changes using Optic. We have set up Optic to:
