@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 export const BookRequest = Type.Object({
   name: Type.String(),
   price: Type.Number(),
+  stock: Type.Number(),
   author_id: Type.String(),
 });
 export type BookRequest = Static<typeof BookRequest>;
@@ -12,6 +13,7 @@ export const BookResponse = Type.Object({
   id: Type.String(),
   name: Type.String(),
   price: Type.Number(),
+  stock: Type.Number(),
   author_id: Type.String(),
   created_at: Type.String(),
   updated_at: Type.String(),
@@ -24,6 +26,7 @@ const books: BookResponse[] = [
     name: "Pride and Prejudice",
     author_id: "6nTxAFM5ck4Hob77hGQoL",
     price: 10,
+    stock: 32,
     created_at: "2023-01-22T17:17:41.326Z",
     updated_at: "2023-01-22T17:17:41.326Z",
   },
@@ -32,6 +35,7 @@ const books: BookResponse[] = [
     name: "The Great Gatsby",
     author_id: "NjpTwgmENj11rGdUgpCQ9",
     price: 15,
+    stock: 17,
     created_at: "2022-10-22T10:11:51.421Z",
     updated_at: "2022-10-22T10:11:51.421Z",
   },
@@ -40,6 +44,7 @@ const books: BookResponse[] = [
     name: "To Kill a Mockingbird",
     author_id: "AcSwiQryWBeQqcNBqBg43",
     price: 8,
+    stock: 3,
     created_at: "2022-05-01T07:11:01.701Z",
     updated_at: "2022-05-12T07:18:19.127Z",
   },
@@ -48,6 +53,7 @@ const books: BookResponse[] = [
     name: "Nineteen Eighty-Four",
     author_id: "tNpOpQZbxytxTxDT15GQy",
     price: 14,
+    stock: 9,
     created_at: "2023-02-01T21:19:08.600Z",
     updated_at: "2023-02-01T21:19:08.600Z",
   },
